@@ -1,0 +1,75 @@
+{
+  "title": "GlowBoost Vitamin C Serum",
+  "overview": {
+    "product_name": "GlowBoost Vitamin C Serum",
+    "concentration": "10% Vitamin C",
+    "skin_types": [
+      "Oily",
+      "Combination"
+    ],
+    "price": "₹699"
+  },
+  "key_ingredients": {
+    "title": "Key Ingredients",
+    "main_ingredient": {
+      "name": "Vitamin C",
+      "concentration": "10% Vitamin C",
+      "description": "Not specified"
+    },
+    "supporting_ingredients": [
+      {
+        "name": "Hyaluronic Acid",
+        "description": "Not specified"
+      }
+    ],
+    "format": "list",
+    "total_count": 2
+  },
+  "benefits": {
+    "title": "Key Benefits",
+    "benefits": [
+      "Brightening",
+      "Fades dark spots"
+    ],
+    "format": "bulleted_list",
+    "total_count": 2
+  },
+  "usage_instructions": {
+    "title": "How to Use",
+    "steps": [
+      "Apply 2–3 drops in the morning before sunscreen"
+    ],
+    "timing": {
+      "when": "Morning",
+      "frequency": "Once daily"
+    },
+    "quantity": {
+      "amount": "2–3",
+      "unit": "drops"
+    },
+    "precautions": [],
+    "format": "step_by_step"
+  },
+  "safety_information": {
+    "title": "Safety Information",
+    "side_effects": [
+      {
+        "effect": "Mild tingling for sensitive skin"
+      }
+    ],
+    "precautions": [],
+    "warnings": [],
+    "recommendations": [],
+    "format": "categorized_warnings"
+  },
+  "metadata": {
+    "last_updated": "2025-12-25",
+    "template": "product",
+    "source_blocks": [
+      "benefits",
+      "usage",
+      "ingredients",
+      "safety"
+    ]
+  }
+}

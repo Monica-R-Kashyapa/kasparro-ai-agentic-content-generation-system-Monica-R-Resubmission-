@@ -1,0 +1,91 @@
+{
+  "title": "GlowBoost Vitamin C Serum vs CitraGlow Serum B",
+  "products_overview": {
+    "product_a": {
+      "name": "GlowBoost Vitamin C Serum",
+      "key_features": [
+        "Concentration: 10% Vitamin C",
+        "Skin types: Oily, Combination",
+        "Price: ₹699"
+      ],
+      "main_benefit": "Brightening"
+    },
+    "product_b": {
+      "name": "CitraGlow Serum B",
+      "key_features": [
+        "Concentration: 15% Vitamin C",
+        "Skin types: Normal, Dry",
+        "Price: ₹899"
+      ],
+      "main_benefit": "Brightening"
+    }
+  },
+  "detailed_comparison": {
+    "ingredients": {
+      "shared": [
+        "Vitamin C"
+      ],
+      "only_a": [
+        "Hyaluronic Acid"
+      ],
+      "only_b": [
+        "Niacinamide"
+      ]
+    },
+    "benefits": {
+      "shared": [
+        "Brightening"
+      ],
+      "only_a": [
+        "Fades dark spots"
+      ],
+      "only_b": [
+        "Evens skin tone"
+      ]
+    },
+    "skin_types": {
+      "shared": [],
+      "only_a": [
+        "Combination",
+        "Oily"
+      ],
+      "only_b": [
+        "Dry",
+        "Normal"
+      ]
+    },
+    "price": {
+      "product_a": "₹699",
+      "product_b": "₹899"
+    }
+  },
+  "winner_analysis": {
+    "category_winners": {
+      "benefits": "Tie",
+      "ingredients": "Tie",
+      "price": "Tie"
+    },
+    "overall_winner": "Tie",
+    "winning_score": 3,
+    "analysis_summary": "Winner analysis is based on the provided winners mapping."
+  },
+  "recommendation": {
+    "by_category": {
+      "benefits": "Tie",
+      "ingredients": "Tie",
+      "price": "Tie"
+    },
+    "note": "Recommendations are derived only from the provided comparison inputs."
+  },
+  "metadata": {
+    "last_updated": "2025-12-25",
+    "template": "comparison",
+    "source_blocks": [
+      "benefits",
+      "usage",
+      "ingredients",
+      "safety",
+      "comparison"
+    ]
+  }
+}

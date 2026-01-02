@@ -1,0 +1,155 @@
+{
+  "nodes": [
+    {
+      "id": "User:start",
+      "agent": "User",
+      "message_type": "start"
+    },
+    {
+      "id": "PlannerAgent:plan",
+      "agent": "PlannerAgent",
+      "message_type": "plan"
+    },
+    {
+      "id": "PlannerAgent:parse_product",
+      "agent": "PlannerAgent",
+      "message_type": "parse_product"
+    },
+    {
+      "id": "ParserAgent:artifact_created",
+      "agent": "ParserAgent",
+      "message_type": "artifact_created"
+    },
+    {
+      "id": "PlannerAgent:generate_block:benefits",
+      "agent": "PlannerAgent",
+      "message_type": "generate_block:benefits"
+    },
+    {
+      "id": "BenefitsAgent:artifact_created",
+      "agent": "BenefitsAgent",
+      "message_type": "artifact_created"
+    },
+    {
+      "id": "PlannerAgent:generate_block:usage",
+      "agent": "PlannerAgent",
+      "message_type": "generate_block:usage"
+    },
+    {
+      "id": "UsageAgent:artifact_created",
+      "agent": "UsageAgent",
+      "message_type": "artifact_created"
+    },
+    {
+      "id": "PlannerAgent:generate_block:ingredients",
+      "agent": "PlannerAgent",
+      "message_type": "generate_block:ingredients"
+    },
+    {
+      "id": "IngredientsAgent:artifact_created",
+      "agent": "IngredientsAgent",
+      "message_type": "artifact_created"
+    },
+    {
+      "id": "PlannerAgent:generate_block:safety",
+      "agent": "PlannerAgent",
+      "message_type": "generate_block:safety"
+    },
+    {
+      "id": "SafetyAgent:artifact_created",
+      "agent": "SafetyAgent",
+      "message_type": "artifact_created"
+    },
+    {
+      "id": "PlannerAgent:generate_block:comparison",
+      "agent": "PlannerAgent",
+      "message_type": "generate_block:comparison"
+    },
+    {
+      "id": "ComparisonAgent:artifact_created",
+      "agent": "ComparisonAgent",
+      "message_type": "artifact_created"
+    },
+    {
+      "id": "PlannerAgent:generate_questions",
+      "agent": "PlannerAgent",
+      "message_type": "generate_questions"
+    },
+    {
+      "id": "QuestionAgent:artifact_created",
+      "agent": "QuestionAgent",
+      "message_type": "artifact_created"
+    },
+    {
+      "id": "PlannerAgent:render_page:faq",
+      "agent": "PlannerAgent",
+      "message_type": "render_page:faq"
+    },
+    {
+      "id": "PageRenderAgent:artifact_created",
+      "agent": "PageRenderAgent",
+      "message_type": "artifact_created"
+    },
+    {
+      "id": "PlannerAgent:render_page:product",
+      "agent": "PlannerAgent",
+      "message_type": "render_page:product"
+    },
+    {
+      "id": "PlannerAgent:render_page:comparison",
+      "agent": "PlannerAgent",
+      "message_type": "render_page:comparison"
+    },
+    {
+      "id": "PlannerAgent:build_graph",
+      "agent": "PlannerAgent",
+      "message_type": "build_graph"
+    }
+  ],
+  "edges": [
+    {
+      "from": "PlannerAgent:plan",
+      "to": "PlannerAgent:parse_product"
+    },
+    {
+      "from": "PlannerAgent:parse_product",
+      "to": "PlannerAgent:generate_block:benefits"
+    },
+    {
+      "from": "PlannerAgent:generate_block:benefits",
+      "to": "PlannerAgent:generate_block:usage"
+    },
+    {
+      "from": "PlannerAgent:generate_block:usage",
+      "to": "PlannerAgent:generate_block:ingredients"
+    },
+    {
+      "from": "PlannerAgent:generate_block:ingredients",
+      "to": "PlannerAgent:generate_block:safety"
+    },
+    {
+      "from": "PlannerAgent:generate_block:safety",
+      "to": "PlannerAgent:generate_block:comparison"
+    },
+    {
+      "from": "PlannerAgent:generate_block:comparison",
+      "to": "PlannerAgent:generate_questions"
+    },
+    {
+      "from": "PlannerAgent:generate_questions",
+      "to": "PlannerAgent:render_page:faq"
+    },
+    {
+      "from": "PlannerAgent:render_page:faq",
+      "to": "PlannerAgent:render_page:product"
+    },
+    {
+      "from": "PlannerAgent:render_page:product",
+      "to": "PlannerAgent:render_page:comparison"
+    },
+    {
+      "from": "PlannerAgent:render_page:comparison",
+      "to": "PlannerAgent:build_graph"
+    }
+  ]
+}
