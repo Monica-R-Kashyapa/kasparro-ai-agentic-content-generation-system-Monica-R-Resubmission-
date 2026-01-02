@@ -57,7 +57,7 @@ Each agent has:
 ## Multi Agent Architecture 
 The system follows an agentic architecture where autonomous agents operate over a shared blackboard, and execution order emerges dynamically based on system state rather than predefined control flow.
 
-![System Architecture](docs/System%20Design/multi-agent-architecture-diagram.png)
+![System Architecture](System%20Design/multi-agent-architecture-diagram.png)
 
 ## System Components
 
@@ -124,13 +124,13 @@ The system is designed as a layered, agentic architecture with explicit data flo
 ### 1. High-Level System Architecture
 The system follows a modular, multi-agent architecture designed to generate structured content from product datasets in an automated, scalable, and extensible manner. The design separates responsibilities across specialized AI agents, coordinated through a central orchestrator and shared memory layer. At a high level, the system transforms structured user input (JSON) into multiple structured output artifacts using reusable content blocks and templates.
 
-![System Architecture](docs/System%20Design/System%20Architecture.jpeg)
+![System Architecture](System%20Design/System%20Architecture.jpeg)
 
 
 ### 2. Orchestration Graph (DAG)
 The system execution is governed by a Directed Acyclic Graph (DAG) that defines task dependencies, execution order, and parallelism across AI agents. The orchestrator uses this DAG to dynamically schedule agents based on data readiness and output availability.
 
-![Orchestration Graph](docs/System%20Design/Orchestration%20Graph.jpeg)
+![Orchestration Graph](System%20Design/Orchestration%20Graph.jpeg)
 
 - Agents are triggered only when required input data is ready, ensuring efficient and deterministic execution.
 - Content Logic and Question Generator agents run in parallel after data parsing to maximize throughput.
@@ -140,7 +140,7 @@ The system execution is governed by a Directed Acyclic Graph (DAG) that defines 
 ### 3. End-to-End Flow Chart
 This flow chart explains the system behavior at a **conceptual level**. It transforms raw input data into structured, ready-to-use JSON outputs through coordinated orchestration and autonomous agents.
 
-![Flowchart](docs/System%20Design/Flowchart.jpeg)
+![Flowchart](System%20Design/Flowchart.jpeg)
 
 
 - The system ingests raw product data along with user requirements as structured inputs.
@@ -152,7 +152,7 @@ This flow chart explains the system behavior at a **conceptual level**. It trans
 ### 4. Sequence Diagram
 This sequence diagram illustrates how multiple AI agents interact over time to generate structured content. It highlights synchronous and asynchronous coordination managed by the orchestrator from input ingestion to final JSON output.
 
-![Sequence Diagram](docs/System%20Design/Sequence%20Diagram.jpeg)
+![Sequence Diagram](System%20Design/Sequence%20Diagram.jpeg)
 
 - The user submits a product dataset in JSON format to start the workflow.
 - The orchestrator agent receives the input and dynamically plans task execution.
@@ -185,6 +185,7 @@ This implementation addresses the feedback about requiring a "true multi-agent s
 5. **Shared state management**: Blackboard for coordination without direct coupling
 
 The system demonstrates genuine multi-agent architecture where emergent behavior arises from autonomous agent interactions, not predetermined orchestration.
+
 
 
 
