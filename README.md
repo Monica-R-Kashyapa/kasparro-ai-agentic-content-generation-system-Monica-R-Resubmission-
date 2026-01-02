@@ -74,33 +74,33 @@ The system follows an agentic architecture where autonomous agents operate over 
   - **Responsibility**: Inspect blackboard, decide what's missing, emit task messages
   - **Dynamic Behavior**: Re-plans after every artifact creation
 
-#### - ParserAgent (Data Ingestion)
+- **ParserAgent (Data Ingestion)**
   - **Responsibility**: Convert raw JSON to structured ProductData model
   - **Trigger**: "parse_product" message
   - **Output**: "product_data" artifact on blackboard
 
-#### - Block Agents (Content Generation)
+- **Block Agents (Content Generation)**
   - **BenefitsAgent, UsageAgent, IngredientsAgent, SafetyAgent, ComparisonAgent**
   - **Responsibility**: Generate specific content blocks from ProductData
   - **Trigger**: "generate_block:{type}" messages
   - **Output**: "block:{type}" artifacts
 
-#### - QuestionAgent (Q&A Generation)
+- **QuestionAgent (Q&A Generation)**
   - **Responsibility**: Generate 15+ categorized questions
   - **Trigger**: "generate_questions" message
   - **Output**: "questions" artifact with categories (Informational, Safety, Usage, Purchase, Comparison)
 
-#### - PageRenderAgent (Template Rendering)
+- **PageRenderAgent (Template Rendering)**
   - **Responsibility**: Render final pages using templates
   - **Trigger**: "render_page:{type}" messages
   - **Output**: JSON content for faq.json, product_page.json, comparison_page.json
 
-#### - GraphAgent (System Visualization)
+- **GraphAgent (System Visualization)**
   - **Responsibility**: Build execution graph from message flow
   - **Trigger**: "build_graph" message
   - **Output**: graph.json showing agent interactions
 
-### - Templates and Content Blocks
+- **Templates and Content Blocks**
   - **TemplateEngine**: Custom template rendering system
   - **Page Templates**: FAQ, Product, Comparison with structured fields
   - **Content Blocks**: Reusable logic for transforming data into copy
@@ -227,6 +227,7 @@ This implementation addresses the feedback about requiring a "true multi-agent s
 5. **Shared state management**: Blackboard for coordination without direct coupling
 
 The system demonstrates genuine multi-agent architecture where emergent behavior arises from autonomous agent interactions, not predetermined orchestration.
+
 
 
 
