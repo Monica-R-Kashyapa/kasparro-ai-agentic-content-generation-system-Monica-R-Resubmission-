@@ -126,6 +126,49 @@ The system follows a modular, multi-agent architecture designed to generate stru
 
 ![System Architecture](docs/System%20Design/System%20Architecture.jpeg)
 
+## Dynamic Multi-Agent Content Generation System – Architecture Description
+
+- **User Input**
+  - Accepts structured product dataset in JSON format
+  - Acts as the starting point of the content generation workflow
+
+- **Orchestrator**
+  - Manages the overall workflow lifecycle
+  - Decides execution order based on system state
+  - Coordinates tasks across multiple AI agents
+  - Ensures smooth handoff between processing stages
+
+- **AI Agents**
+  - **Parsing Agent**
+    - Extracts and normalizes structured data from raw product JSON
+    - Prepares clean inputs for downstream agents
+  - **Content Logic Agent**
+    - Generates reusable content blocks
+    - Applies domain-specific logic to enrich product content
+  - **FAQ Agent**
+    - Creates categorized FAQs based on product data
+    - Improves informational depth and user understanding
+  - **Centralized Blackboard (Shared Memory)**
+    - Serves as shared state accessible by all agents
+    - Enables collaboration and data reuse across agents
+
+- **Blocks & Templates**
+  - Stores reusable content blocks
+  - Defines page-level templates
+  - Ensures consistency across generated pages
+
+- **Output Generator**
+  - Formats and assembles content from agents and templates
+  - Applies final structural transformations
+
+- **Structured JSON Outputs**
+  - Generates finalized machine-readable outputs
+  - Includes:
+    - Product Page JSON
+    - FAQ Page JSON
+    - Comparison JSON
+    - Graph / Structured Data Outputs
+
 
 ### 2. Orchestration Graph (DAG)
 The system execution is governed by a Directed Acyclic Graph (DAG) that defines task dependencies, execution order, and parallelism across AI agents. The orchestrator uses this DAG to dynamically schedule agents based on data readiness and output availability.
@@ -185,6 +228,7 @@ This implementation addresses the feedback about requiring a "true multi-agent s
 5. **Shared state management**: Blackboard for coordination without direct coupling
 
 The system demonstrates genuine multi-agent architecture where emergent behavior arises from autonomous agent interactions, not predetermined orchestration.
+
 
 
 
