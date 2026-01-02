@@ -56,6 +56,7 @@ Each agent has:
 
 ## Multi Agent Architecture 
 The system follows an agentic architecture where autonomous agents operate over a shared blackboard, and execution order emerges dynamically based on system state rather than predefined control flow.
+
 ![System Architecture](docs/System%20Design/multi-agent-architecture-diagram.png)
 
 ## System Components
@@ -139,7 +140,7 @@ The system execution is governed by a Directed Acyclic Graph (DAG) that defines 
 ### 3. End-to-End Flow Chart
 This flow chart explains the system behavior at a **conceptual level**. It transforms raw input data into structured, ready-to-use JSON outputs through coordinated orchestration and autonomous agents.
 
-![Flowchart](https://github.com/user-attachments/assets/39aa98b0-9b50-4df5-b5a1-61a88663978f)
+![Flowchart](docs/System%20Design/Flowchart.jpeg)
 
 
 - The system ingests raw product data along with user requirements as structured inputs.
@@ -162,12 +163,16 @@ This sequence diagram illustrates how multiple AI agents interact over time to g
 - The JSON output agent validates the final structure and saves the generated JSON files.
 - The workflow completes once all required outputs are successfully generated and stored.
 
+---
+
 ## Results
 This produces:
 - `outputs/faq.json` - Frequently Asked Questions page with 15+ categorized Q&As
 - `outputs/product_page.json` - Product description page
 - `outputs/comparison_page.json` - Comparison with fictional competitor
 - `outputs/graph.json` - Dynamic execution graph
+
+---
 
 ## Architecture Validation
 
@@ -180,5 +185,6 @@ This implementation addresses the feedback about requiring a "true multi-agent s
 5. **Shared state management**: Blackboard for coordination without direct coupling
 
 The system demonstrates genuine multi-agent architecture where emergent behavior arises from autonomous agent interactions, not predetermined orchestration.
+
 
 
