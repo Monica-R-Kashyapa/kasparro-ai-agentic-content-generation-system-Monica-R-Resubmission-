@@ -70,7 +70,7 @@ The system follows an agentic architecture where autonomous agents operate over 
 
 ### Autonomous Agents
 
-#### - PlannerAgent (Coordinator)
+- **PlannerAgent (Coordinator)** 
   - **Responsibility**: Inspect blackboard, decide what's missing, emit task messages
   - **Dynamic Behavior**: Re-plans after every artifact creation
 
@@ -104,7 +104,6 @@ The system follows an agentic architecture where autonomous agents operate over 
   - **TemplateEngine**: Custom template rendering system
   - **Page Templates**: FAQ, Product, Comparison with structured fields
   - **Content Blocks**: Reusable logic for transforming data into copy
-
 
 ### Message Flow Example
 
@@ -228,6 +227,7 @@ This implementation addresses the feedback about requiring a "true multi-agent s
 5. **Shared state management**: Blackboard for coordination without direct coupling
 
 The system demonstrates genuine multi-agent architecture where emergent behavior arises from autonomous agent interactions, not predetermined orchestration.
+
 
 
 
