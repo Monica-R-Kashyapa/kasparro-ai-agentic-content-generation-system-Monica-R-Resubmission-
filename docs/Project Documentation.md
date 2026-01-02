@@ -4,6 +4,11 @@ A modular, agentic content generation system that autonomously converts structur
 ## Problem Addressed
 The core requirement of the task has not been met because it failed to demonstrate a true multi-agent system. The feedback specifically stated:
 "Simply hard-coding multiple functions or sequential logic and labeling them as 'agents' does not satisfy this requirement. A valid solution requires: Clear separation of agent responsibilities, Dynamic agent interaction and coordination, An architecture that supports agent autonomy rather than static control flow"
+
+A valid solution requires:
+- Clear separation of agent responsibilities
+- Dynamic agent interaction and coordination
+- An architecture that supports agent autonomy rather than static control flow
   
 ## Solution Overview
 This implementation now represents a genuine multi-agent system that:
@@ -24,6 +29,7 @@ This implementation now represents a genuine multi-agent system that:
 | **System Behavior**    | Predictable execution                        | Emergent behavior from agent interactions      | “Not demonstrating intended outcomes”                                            | System adapts based on current state                       
 | **Decision Making**    | Coded in orchestration logic                 | Runtime decisions by `PlannerAgent`            | “No dynamic coordination”                                                        | Planner re-plans after each step                            |
 
+---
 
 ### Key Architecture Principles
 
@@ -46,6 +52,13 @@ Each agent has:
 - **Self-contained logic**: Agents don't know about other agents' internals
 - **Stateless processing**: Agents read from blackboard, write results back
 
+---
+
+## Multi Agent Architecture 
+The system follows an agentic architecture where autonomous agents operate over a shared blackboard, and execution order emerges dynamically based on system state rather than predefined control flow.
+
+![System Architecture](docs/System%20Design/multi-agent-architecture-diagram.png)
+
 ## System Components
 
 ### Core Runtime
@@ -54,14 +67,6 @@ Each agent has:
 - **Agent**: Abstract base class with can_handle() and handle() methods
 - **AgentRegistry**: Registers agents and routes messages to capable handlers
 - **EventLoopOrchestrator**: Runs message queue until goals satisfied
-
-# System Design
-The system is designed as a layered, agentic architecture with explicit data flow.
-
-### 1. High-Level System Architecture
-The system follows a modular, multi-agent architecture designed to generate structured content from product datasets in an automated, scalable, and extensible manner. The design separates responsibilities across specialized AI agents, coordinated through a central orchestrator and shared memory layer. At a high level, the system transforms structured user input (JSON) into multiple structured output artifacts using reusable content blocks and templates.
-
-![System Architecture](System%20Design/System%20Architecture.png)
 
 ### Autonomous Agents
 
@@ -111,11 +116,21 @@ The system follows a modular, multi-agent architecture designed to generate stru
 6. **BenefitsAgent** generates benefits block artifact
 7. **PlannerAgent** continues until all goals satisfied
 
+---
+
+# System Design
+The system is designed as a layered, agentic architecture with explicit data flow.
+
+### 1. High-Level System Architecture
+The system follows a modular, multi-agent architecture designed to generate structured content from product datasets in an automated, scalable, and extensible manner. The design separates responsibilities across specialized AI agents, coordinated through a central orchestrator and shared memory layer. At a high level, the system transforms structured user input (JSON) into multiple structured output artifacts using reusable content blocks and templates.
+
+![System Architecture](docs/System%20Design/System%20Architecture.jpeg)
+
 
 ### 2. Orchestration Graph (DAG)
 The system execution is governed by a Directed Acyclic Graph (DAG) that defines task dependencies, execution order, and parallelism across AI agents. The orchestrator uses this DAG to dynamically schedule agents based on data readiness and output availability.
 
-![Orchestration Graph](System%20Design/Orchestration%20Graph.png)
+![Orchestration Graph](docs/System%20Design/Orchestration%20Graph.jpeg)
 
 - Agents are triggered only when required input data is ready, ensuring efficient and deterministic execution.
 - Content Logic and Question Generator agents run in parallel after data parsing to maximize throughput.
@@ -125,7 +140,8 @@ The system execution is governed by a Directed Acyclic Graph (DAG) that defines 
 ### 3. End-to-End Flow Chart
 This flow chart explains the system behavior at a **conceptual level**. It transforms raw input data into structured, ready-to-use JSON outputs through coordinated orchestration and autonomous agents.
 
-![Flowchart](System%20Design/Flowchart.png)
+![Flowchart](docs/System%20Design/Flowchart.jpeg)
+
 
 - The system ingests raw product data along with user requirements as structured inputs.
 - A central orchestrator performs workflow orchestration and dynamic planning based on input data and target outputs.
@@ -136,7 +152,7 @@ This flow chart explains the system behavior at a **conceptual level**. It trans
 ### 4. Sequence Diagram
 This sequence diagram illustrates how multiple AI agents interact over time to generate structured content. It highlights synchronous and asynchronous coordination managed by the orchestrator from input ingestion to final JSON output.
 
-![Sequence Diagram](System%20Design/Sequence%20Diagram.png)
+![Sequence Diagram](docs/System%20Design/Sequence%20Diagram.jpeg)
 
 - The user submits a product dataset in JSON format to start the workflow.
 - The orchestrator agent receives the input and dynamically plans task execution.
@@ -147,12 +163,16 @@ This sequence diagram illustrates how multiple AI agents interact over time to g
 - The JSON output agent validates the final structure and saves the generated JSON files.
 - The workflow completes once all required outputs are successfully generated and stored.
 
+---
+
 ## Results
 This produces:
 - `outputs/faq.json` - Frequently Asked Questions page with 15+ categorized Q&As
 - `outputs/product_page.json` - Product description page
 - `outputs/comparison_page.json` - Comparison with fictional competitor
 - `outputs/graph.json` - Dynamic execution graph
+
+---
 
 ## Architecture Validation
 
@@ -165,3 +185,6 @@ This implementation addresses the feedback about requiring a "true multi-agent s
 5. **Shared state management**: Blackboard for coordination without direct coupling
 
 The system demonstrates genuine multi-agent architecture where emergent behavior arises from autonomous agent interactions, not predetermined orchestration.
+
+
+
