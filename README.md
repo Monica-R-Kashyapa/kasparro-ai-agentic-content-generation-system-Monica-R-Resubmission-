@@ -70,11 +70,21 @@ The system follows an agentic architecture where autonomous agents operate over 
 
 ### Autonomous Agents
 
+- **EventLoopOrchestrator (System Controller)**
+    - Processes message queue continuously
+    - Routes messages to capable agents via AgentRegistry
+    - Monitors goal satisfaction
+    - Stops execution when all goals are met
+    - **Connections**:
+        - Receives from: User (start message)
+        - Sends to: AgentRegistry (for routing)
+        - Interacts with: All agents (message routing), Blackboard (goal checking)
+
 - **Planner Agent (Coordinator)** 
   - **Responsibility**: Inspect blackboard, decide what's missing, emit task messages
   - **Dynamic Behavior**: Re-plans after every artifact creation
-  - Connections:
-     - Receives from: User (start), itself (plan, artifact\_created)
+  - **Connections**:
+     - Receives from: User (start), itself (plan, artifact_created)
      - Sends to: ParserAgent, BlockAgents, QuestionAgent, PageRenderAgent, GraphAgent
      - Interacts with: Blackboard (reads state)
 
@@ -82,6 +92,10 @@ The system follows an agentic architecture where autonomous agents operate over 
   - **Responsibility**: Convert raw JSON to structured ProductData model
   - **Trigger**: "parse_product" message
   - **Output**: "product_data" artifact on blackboard
+  - **Connections**:
+      - Receives from: PlannerAgent (parse_product)
+      - Sends to: PlannerAgent (artifact_created)
+      - Interacts with: Blackboard (writes product_data)
 
 - **Block Agents (Content Generation)**
   - **BenefitsAgent, UsageAgent, IngredientsAgent, SafetyAgent, ComparisonAgent**
@@ -90,14 +104,22 @@ The system follows an agentic architecture where autonomous agents operate over 
   - **Output**: "block:{type}" artifacts
 
 - **Question Agent (Q&A Generation)**
-  - **Responsibility**: Generate 15+ categorized questions
+  - **Responsibility**: Generate 15+ categorized questions from ProductData, Generate comparison points (ingredients, benefits, price), Determine winners for each comparison aspect
   - **Trigger**: "generate_questions" message
   - **Output**: "questions" artifact with categories (Informational, Safety, Usage, Purchase, Comparison)
+  - **Connections**:
+      - Receives from: PlannerAgent (generate_questions)
+      - Sends to: PlannerAgent (artifact_created)
+      - Interacts with: Blackboard (reads product_data, writes questions)
 
 - **Page Render Agent (Template Rendering)**
-  - **Responsibility**: Render final pages using templates
+  - **Responsibility**: Render final pages using templates and content block
   - **Trigger**: "render_page:{type}" messages
   - **Output**: JSON content for faq.json, product_page.json, comparison_page.json
+  - **Connections**:
+      - Receives from: PlannerAgent (render_page:faq, render_page:product, render_page:comparison)
+      - Sends to: PlannerAgent (artifact_created)
+      - Interacts with: Blackboard (reads blocks/questions, writes JSON pages)
 
 - **Graph Agent (System Visualization)**
   - **Responsibility**: Build execution graph from message flow
@@ -111,13 +133,18 @@ The system follows an agentic architecture where autonomous agents operate over 
 
 ### Message Flow Example
 
-1. **User** sends "start" message with product data
-2. **PlannerAgent** receives "start", stores data, emits "plan"
-3. **PlannerAgent** receives "plan", sees missing product_data, emits "parse_product"
-4. **ParserAgent** receives "parse_product", creates product_data artifact
-5. **PlannerAgent** sees new artifact, emits "generate_block:benefits"
-6. **BenefitsAgent** generates benefits block artifact
-7. **PlannerAgent** continues until all goals satisfied
+* User sends "start" message with product data
+* PlannerAgent receives "start", stores data, emits "parse_product"
+* ParserAgent receives "parse_product", creates product_data artifact
+* PlannerAgent receives "artifact_created", emits "generate_block" messages to 5 block agents
+* Block agents create benefits, usage, ingredients, safety, comparison artifacts
+* PlannerAgent receives all block artifacts, emits "generate_questions"
+* QuestionAgent creates questions artifact
+* PlannerAgent receives questions artifact, emits "render_page" messages
+* PageRenderAgent creates 3 JSON pages (faq, product, comparison)
+* PlannerAgent receives page artifacts, emits "build_graph"
+* GraphAgent creates graph.json artifact
+* PlannerAgent receives graph artifact, sees all goals satisfied, system stops
 
 ---
 
@@ -231,6 +258,7 @@ This implementation addresses the feedback about requiring a "true multi-agent s
 5. **Shared state management**: Blackboard for coordination without direct coupling
 
 The system demonstrates genuine multi-agent architecture where emergent behavior arises from autonomous agent interactions, not predetermined orchestration.
+
 
 
 
