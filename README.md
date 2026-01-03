@@ -73,6 +73,10 @@ The system follows an agentic architecture where autonomous agents operate over 
 - **Planner Agent (Coordinator)** 
   - **Responsibility**: Inspect blackboard, decide what's missing, emit task messages
   - **Dynamic Behavior**: Re-plans after every artifact creation
+  - Connections:
+     - Receives from: User (start), itself (plan, artifact\_created)
+     - Sends to: ParserAgent, BlockAgents, QuestionAgent, PageRenderAgent, GraphAgent
+     - Interacts with: Blackboard (reads state)
 
 - **Parser Agent (Data Ingestion)**
   - **Responsibility**: Convert raw JSON to structured ProductData model
@@ -227,6 +231,7 @@ This implementation addresses the feedback about requiring a "true multi-agent s
 5. **Shared state management**: Blackboard for coordination without direct coupling
 
 The system demonstrates genuine multi-agent architecture where emergent behavior arises from autonomous agent interactions, not predetermined orchestration.
+
 
 
 
